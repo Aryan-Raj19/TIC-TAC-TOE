@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://www.clipartmax.com/png/middle/53-533381_tic-tac-toe-hand-drawn-game-logo-tic-tac-toe-png.png"
+        type="image/x-icon">
+    <title>Online Tic Tac Toe - Play Online with friends</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gantari:wght@400&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background: #000;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .heading {
+            color: rgb(255, 255, 255);
+            padding-top: 3vh;
+            padding-bottom: 3vh;
+            margin-bottom: 5vh;
+            display: flex;
+            justify-content: center;
+            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+                "Lucida Sans", Arial, sans-serif;
+        }
+
+        .game {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .game-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5vh;
+            margin-left: 39.1vw;
+        }
+
+        .details {
+            color: rgb(255, 255, 255);
+            margin: auto;
+            font-size: 1.2rem;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .box {
+            color: rgb(255, 255, 255);
+            width: 2vh;
+            border: 3px solid white;
+            padding: 3vh;
+            font-size: 3rem;
+        }
+
+        .box-text {
+            margin-left: 10px;
+            font-family: "Gantari", sans-serif;
+        }
+
+        .box:hover {
+            color: rgb(136, 136, 136);
+            width: 2vh;
+            border: 3px solid white;
+            padding: 3vh;
+            font-size: 3rem;
+        }
+
+        .box-one {
+            border-top: #000;
+            border-left: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-one:hover {
+            border-top: #000;
+            border-left: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-two {
+            border-top: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-two:hover {
+            border-top: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-three {
+            border-top: #000;
+            border-right: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-three:hover {
+            border-top: #000;
+            border-right: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-four {
+            border-left: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-four:hover {
+            border-left: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-five {
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-five:hover {
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-six {
+            border-right: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-six:hover {
+            border-right: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-seven {
+            border-left: #000;
+            border-bottom: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-seven:hover {
+            border-left: #000;
+            border-bottom: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-eight {
+            border-bottom: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-eight:hover {
+            border-bottom: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-nine {
+            border-right: #000;
+            border-bottom: #000;
+            width: 55px;
+            height: 55px;
+        }
+
+        .box-nine:hover {
+            border-right: #000;
+            border-bottom: #000;
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+        }
+
+        .score-card {
+            background: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            font-size: 1.2rem;
+            padding-top: 2vh;
+            color: rgb(255, 255, 255);
+            padding-bottom: 7vh;
+        }
+
+        .player {
+            border: 1.7px solid white;
+            padding-left: 25px;
+            padding-right: 25px;
+            padding-bottom: 5px;
+            font-family: "Gantari", sans-serif;
+        }
+
+        .player-one {
+            border-top: #000;
+            border-left: #000;
+        }
+
+        .tie {
+            border-top: #000;
+        }
+
+        .player-two {
+            border-top: #000;
+            border-right: #000;
+        }
+
+        .score {
+            border: 1.7px solid white;
+            padding-top: 5px;
+            font-family: "Gantari", sans-serif;
+        }
+
+        .player-one-score {
+            padding-left: 52px;
+            border-bottom: #000;
+            border-left: #000;
+        }
+
+        .tie-times {
+            padding-left: 32px;
+            border-bottom: #000;
+        }
+
+        .player-two-score {
+            padding-left: 69px;
+            border-bottom: #000;
+            border-right: #000;
+        }
+
+        @media screen and (max-width: 625px) {
+            .game {
+                flex-wrap: wrap;
+                margin: 0 40px 10px -110px;
+            }
+
+            .details {
+                margin-bottom: 10px;
+                margin-top: 5px;
+                margin-left: 270px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="heading">Have Fun!!!</h1>
+
+        <div class="game">
+            <div class="game-box">
+                <table>
+                    <tr class="verticle-line">
+                        <td class="box box-one" id="box"><span class="box-text"></span></td>
+                        <td class="box box-two" id="box"><span class="box-text"></span></td>
+                        <td class="box box-three" id="box"><span class="box-text"></span></td>
+                    </tr>
+                    <tr class="verticle-line">
+                        <td class="box box-four" id="box"><span class="box-text"></span></td>
+                        <td class="box box-five" id="box"><span class="box-text"></span></td>
+                        <td class="box box-six" id="box"><span class="box-text"></span></td>
+                    </tr>
+                    <tr class="verticle-line">
+                        <td class="box box-seven" id="box"><span class="box-text"></span></td>
+                        <td class="box box-eight" id="box"><span class="box-text"></span></td>
+                        <td class="box box-nine" id="box"><span class="box-text"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="details">
+                <p>Turn for X</p>
+            </div>
+        </div>
+        <div class="score-card">
+            <table class="score-table">
+                <tr class="players">
+                    <td class="player player-one">Player 1 (X)</td>
+                    <td class="player tie">Tie</td>
+                    <td class="player player-two">Player 2 (O)</td>
+                </tr>
+                <tr class="score-bar">
+                    <td class="score player-one-score">0</td>
+                    <td class="score tie-times">0</td>
+                    <td class="score player-two-score">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        console.log("Enjoy the game");
+        let turn = "X";
+        let isgameover = false;
+        let scoreplayer1 = 0;
+        let scoreplayer2 = 0;
+        let tie = 0;
+
+        // Function to change the turn
+        const changeTurn = () => {
+            return turn === "X" ? "0" : "X";
+        };
+
+        let boxtext = document.getElementsByClassName("box-text");
+
+        let wins = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6],
+        ];
+
+        const toWin = () => {
+            wins.forEach((e) => {
+                if (
+                    boxtext[e[0]].innerText === boxtext[e[1]].innerText &&
+                    boxtext[e[2]].innerText === boxtext[e[1]].innerText &&
+                    boxtext[e[0]].innerText !== ""
+                ) {
+                    document.getElementsByClassName("details")[0].innerText = boxtext[e[0]].innerText + " Won";
+
+                    isgameover = true;
+                    boxtext[e[0]].style.color = "#d74242";
+                    boxtext[e[1]].style.color = "#d74242";
+                    boxtext[e[2]].style.color = "#d74242";
+                    if (boxtext[e[0]].innerText === "X") {
+                        scoreplayer1++;
+                        document.querySelector(".player-one-score").innerText = scoreplayer1;
+                    } else if (boxtext[e[0]].innerText === "0") {
+                        scoreplayer2++;
+                        document.querySelector(".player-two-score").innerText = scoreplayer2;
+                    }
+                } else {
+                    totie();
+                    // document.getElementsByClassName("details")[0].innerText = "Match Tied";
+                }
+            });
+        };
+
+        const totie = () => {
+            if (
+                boxtext[0].innerText !== "" &&
+                boxtext[1].innerText !== "" &&
+                boxtext[2].innerText !== "" &&
+                boxtext[3].innerText !== "" &&
+                boxtext[4].innerText !== "" &&
+                boxtext[5].innerText !== "" &&
+                boxtext[6].innerText !== "" &&
+                boxtext[7].innerText !== "" &&
+                boxtext[8].innerText !== ""
+            ) {
+                tie++;
+                document.querySelector(".tie-times").innerText = tie / 8;
+                setTimeout(restart, 1500);
+                setTimeout(newgame, 1600);
+                boxtext[0].style.color = "#a6a6a6";
+                boxtext[1].style.color = "#a6a6a6";
+                boxtext[2].style.color = "#a6a6a6";
+                boxtext[3].style.color = "#a6a6a6";
+                boxtext[4].style.color = "#a6a6a6";
+                boxtext[5].style.color = "#a6a6a6";
+                boxtext[6].style.color = "#a6a6a6";
+                boxtext[7].style.color = "#a6a6a6";
+                boxtext[8].style.color = "#a6a6a6";
+            }
+        };
+
+        let boxes = document.getElementsByClassName("box");
+        Array.from(boxes).forEach((e) => {
+            let move = e.querySelector(".box-text");
+            e.addEventListener("click", () => {
+                if (move.innerText === "") {
+                    move.innerText = turn;
+                    turn = changeTurn();
+                    toWin();
+                    if (isgameover) {
+                        setTimeout(restart, 1500);
+                        setTimeout(newgame, 1600);
+                    } else {
+                        document.getElementsByClassName("details")[0].innerText =
+                            "Turn for " + turn;
+                    }
+                }
+            });
+        });
+
+        const restart = () => {
+            Array.from(boxes).forEach((e) => {
+                let boxtexts = e.querySelector(".box-text");
+                boxtexts.innerText = "";
+            });
+            boxtext[0].style.color = "white";
+            boxtext[1].style.color = "white";
+            boxtext[2].style.color = "white";
+            boxtext[3].style.color = "white";
+            boxtext[4].style.color = "white";
+            boxtext[5].style.color = "white";
+            boxtext[6].style.color = "white";
+            boxtext[7].style.color = "white";
+            boxtext[8].style.color = "white";
+        };
+
+        const newgame = () => {
+            Array.from(boxes).forEach((e) => {
+                e.style.color = "white";
+                isgameover = false;
+                document.getElementsByClassName("details")[0].innerText =
+                    "Click on box to start new Game";
+                turn = changeTurn();
+                let boxtexts = e.querySelector(".box-text");
+                e.addEventListener("click", () => {
+                    if (boxtexts.innerText === "") {
+                        boxtexts.innerText = turn;
+                        turn = changeTurn();
+                    }
+                });
+            });
+        };
+
+
+
+    </script>
+
+</body>
+
+</html>

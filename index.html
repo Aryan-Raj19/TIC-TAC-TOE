@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://www.clipartmax.com/png/middle/53-533381_tic-tac-toe-hand-drawn-game-logo-tic-tac-toe-png.png" type="image/x-icon">
+    <title>Online Tic Tac Toe - Play Online with friends</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gantari:wght@400&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="heading">Have Fun!!!</h1>
+
+        <div class="game">
+            <div class="game-box">
+                <table>
+                    <tr class="verticle-line">
+                        <td class="box box-one" id="box"><span class="box-text"></span></td>
+                        <td class="box box-two" id="box"><span class="box-text"></span></td>
+                        <td class="box box-three" id="box"><span class="box-text"></span></td>
+                    </tr>
+                    <tr class="verticle-line">
+                        <td class="box box-four" id="box"><span class="box-text"></span></td>
+                        <td class="box box-five" id="box"><span class="box-text"></span></td>
+                        <td class="box box-six" id="box"><span class="box-text"></span></td>
+                    </tr>
+                    <tr class="verticle-line">
+                        <td class="box box-seven" id="box"><span class="box-text"></span></td>
+                        <td class="box box-eight" id="box"><span class="box-text"></span></td>
+                        <td class="box box-nine" id="box"><span class="box-text"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="details">
+                <p>Turn for X</p>
+            </div>
+        </div>
+        <div class="score-card">
+            <table class="score-table">
+                <tr class="players">
+                    <td class="player player-one">Player 1 (X)</td>
+                    <td class="player tie">Tie</td>
+                    <td class="player player-two">Player 2 (O)</td>
+                </tr>
+                <tr class="score-bar">
+                    <td class="score player-one-score">0</td>
+                    <td class="score tie-times">0</td>
+                    <td class="score player-two-score">0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="index.js"></script>
+
+</body>
+
+</html>
